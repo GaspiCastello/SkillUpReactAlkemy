@@ -19,7 +19,7 @@ export default function Sidebar() {
       borderRadius="15px"
       w={{ base: '100px', md: '175px' }}
       flexDir="column"
-      bg="blue.500"
+      bg="red.500"
     >
       <Link to={'/'}>
           <ColorModeSwitcher marginTop={3} />
