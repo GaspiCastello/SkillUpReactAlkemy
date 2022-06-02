@@ -18,29 +18,29 @@ const List = () => {
   console.log(movies);
   return (
     <Grid
-    templateColumns={{
-      base: 'repeat(1 , 1fr)',
-      lg: 'repeat(2 , 1fr)',
-      xl: 'repeat(3 , 1fr)',
-    }}
-    gap={8}
+      templateColumns={{
+        base: 'repeat(1 , 1fr)',
+        lg: 'repeat(2 , 1fr)',
+        xl: 'repeat(3 , 1fr)',
+      }}
+      gap={8}
     >
       {movies ? (
-        movies.map(({ poster_path, title, overview }, index) => (
-          <GridItem
-            borderRadius="15px"
-            key={index}
-            w="100%"
-            // h="1000"
-            // bg="red.600"
-          >
-          <MovieCard
-            poster_path={poster_path}
-            title={title}
-            overview={overview}
-          />
-          </GridItem>
-        ))
+        movies.map(
+          (
+            { poster_path, title, original_name = 'title', overview,id },
+            index
+          ) => (
+            <GridItem borderRadius="15px" key={index} w="100%">
+              <MovieCard
+                poster_path={poster_path}
+                title={title ? title : original_name}
+                overview={overview}
+                id={id}
+              />
+            </GridItem>
+          )
+        )
       ) : (
         <Spinner />
       )}

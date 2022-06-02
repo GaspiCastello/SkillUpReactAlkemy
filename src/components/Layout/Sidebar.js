@@ -11,21 +11,20 @@ import { ColorModeSwitcher } from '../ColorModeSwitcher';
 export default function Sidebar() {
   return (
     <Flex
-      pos="sticky"
+      pos="fixed"
       left="5"
       h="100vh"
       marginTop="2.5vh"
-      boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
-      borderRadius="15px"
+      borderRadius="lg"
       w={{ base: '100px', md: '175px' }}
       flexDir="column"
       bg="red.500"
     >
       <Link to={'/'}>
-          <ColorModeSwitcher marginTop={3} />
+        <ColorModeSwitcher marginTop={3} />
       </Link>
-      <Link to={'/favorites'}>
-        <NavItem icon={FiHome} title="Releases" />
+      <Link to={'/'}>
+        <NavItem icon={FiHome} title="Trendings" />
       </Link>
       <Link to={'/favorites'}>
         <NavItem icon={AiOutlineStar} title="Favorites" />

@@ -12,7 +12,7 @@ export default function NavItem({ icon, title }) {
         _hover={{ backgroundColor: 'red.300' }}
       >
         <Icon as={icon} h={8} w={8} fontSize="xl" />
-        <Text ml={5} display={{ base: 'none', md: 'block' }}>
+        <Text fontWeight='bold' display={{ base: 'none', md: 'block' }}>
           {title}
         </Text>
       </Stack>
