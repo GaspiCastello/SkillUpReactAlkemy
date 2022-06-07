@@ -19,6 +19,7 @@ export default function MovieCard({
         border="1px solid "
         borderColor="red.500"
         boxShadow="lg"
+        
       >
         <Stack flexDirection="column">
           <Image borderRadius={12} src={url} h="600px" objectFit="cover" />

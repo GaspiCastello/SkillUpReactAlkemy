@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
   return (
     <Flex m={3}>
       <Sidebar />
-      <Box w="100%" marginLeft={60}>
+      <Box w="100%" marginLeft={{ base:40, md: 60 }}>
         <main>{children}</main>
       </Box>
     </Flex>

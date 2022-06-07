@@ -16,13 +16,11 @@ export default function Sidebar() {
       h="100vh"
       marginTop="2.5vh"
       borderRadius="lg"
-      w={{ base: '100px', md: '175px' }}
+      w={{ base: '80px', md: '180px' }}
       flexDir="column"
       bg="red.500"
     >
-      <Link to={'/'}>
-        <ColorModeSwitcher marginTop={3} />
-      </Link>
+      <ColorModeSwitcher marginTop={3} w='50%' />
       <Link to={'/'}>
         <NavItem icon={FiHome} title="Trendings" />
       </Link>
