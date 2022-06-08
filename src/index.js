@@ -10,7 +10,7 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
 root.render(
-  <StrictMode>
+  // <StrictMode>
     <ChakraProvider theme={theme}>
       <ColorModeScript />
       <BrowserRouter>
@@ -19,5 +19,5 @@ root.render(
         </Provider>
       </BrowserRouter>
     </ChakraProvider>
-  </StrictMode>
+  // </StrictMode>
 );

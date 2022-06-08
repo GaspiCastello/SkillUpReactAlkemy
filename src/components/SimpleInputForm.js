@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
-import { Button, Flex, FormLabel, Input } from '@chakra-ui/react';
+import { Button, Flex, Input } from '@chakra-ui/react';
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -12,7 +12,7 @@ const MyTextInput = ({ label, ...props }) => {
         errorBorderColor="crimson"
         variant="filled"
         className="text-input"
-       focusBorderColor='white'
+        focusBorderColor="white"
         {...field}
         {...props}
       />
@@ -31,8 +31,7 @@ const SimpleInputForm = () => {
           movie: '',
         }}
         validationSchema={Yup.object({
-          movie: Yup.string()
-            .max(15, 'Must be 15 characters or less')
+          movie: Yup.string().max(15, 'Must be 15 characters or less'),
         })}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
@@ -42,14 +41,14 @@ const SimpleInputForm = () => {
         }}
       >
         <Form>
-          <Flex w='auto'>
+          <Flex w="auto">
             <MyTextInput
               label="movie"
               name="movie"
               type="text"
               placeholder="Your favorite movie"
             />
-            <Button color='red.600' variant="outline" type="submit">
+            <Button color="red.600" variant="outline" type="submit">
               SEARCH
             </Button>
           </Flex>

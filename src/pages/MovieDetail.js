@@ -1,12 +1,14 @@
-import { Box, Center, Spinner } from '@chakra-ui/react';
-import { Fragment, useEffect, useState } from 'react';
+import { Center, Spinner } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MovieCard from '../components/UI/MovieCard';
 
 const MovieDetail = () => {
   const [details, setDetails] = useState(null);
   let { movieId } = useParams();
+  
   let url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=f823ab276565607de98752dcca12f482`;
+  
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
