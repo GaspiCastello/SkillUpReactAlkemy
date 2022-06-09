@@ -8,7 +8,7 @@ let url =
 
 const List = ({ results=[] }) => {
   const [movies, setMovies] = useState([]);
-  console.log(results,'in List')
+  // console.log(results,'in List')
 
   useEffect(() => {
    
@@ -17,7 +17,7 @@ const List = ({ results=[] }) => {
         .then(res => {
           setMovies(res.results);
         });
-        console.log('fetching in List')
+        // console.log('fetching in List')
     }, []);
 
     let toMap

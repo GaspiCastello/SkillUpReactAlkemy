@@ -9,7 +9,7 @@ const Home = () => {
   const [results, setResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const debouncedSearchTerm = useDebounce(searchTerm, 750);
-  console.log(results, 'in Home');
+  // console.log(results, 'in Home');
 
   let url = `https://api.themoviedb.org/3/search/movie?api_key=${K.apiKey}&query=${debouncedSearchTerm}`;
 
@@ -41,7 +41,6 @@ const Home = () => {
             Trendings
           </Text>
           <Input
-          
             my={6}
             p={4}
             onChange={e => setSearchTerm(e.target.value)}

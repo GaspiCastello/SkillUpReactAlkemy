@@ -4,7 +4,7 @@ import MovieCard from './UI/MovieCard';
 
 const Results = ({results}) => {
 
-  // console.log(results);
+  // // console.log(results);
   return (
     <Grid
       templateColumns={{

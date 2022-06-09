@@ -14,13 +14,13 @@ export const useAxios = () => {
         setResponse(res.data);
       })
       .catch(function (error) {
-        console.log(error.response, error.message);
+        // console.log(error.response, error.message);
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
+          // console.log(error.response.data);
+          // console.log(error.response.status);
+          // console.log(error.response.headers);
           return swal(
             error.response.data.message,
             "from API",
