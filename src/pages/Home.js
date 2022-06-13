@@ -9,42 +9,45 @@ const Home = () => {
   const [results, setResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const debouncedSearchTerm = useDebounce(searchTerm, 750);
-  // console.log(results, 'in Home');
-
-  let url = `https://api.themoviedb.org/3/search/movie?api_key=${K.apiKey}&query=${debouncedSearchTerm}`;
-
+  let url;
   useEffect(() => {
     const controller = new AbortController();
     if (debouncedSearchTerm) {
-      setIsSearching(true);
-      fetch(url)
-        .then(res => res.json())
-        .then(res => {
-          setIsSearching(false);
-          setResults(res.results);
-        })
-        .catch(error => {
-          console.error(error);
-          setResults([]);
-        });
+      url = `https://api.themoviedb.org/3/search/movie?api_key=${K.apiKey}&query=${debouncedSearchTerm}`;
+      // console.log('url', url);
     } else {
-      setResults([]);
+      url = `https://api.themoviedb.org/3/trending/all/week?api_key=${K.apiKey}`;
     }
+    setIsSearching(true);
+    fetch(url)
+      .then(res => res.json())
+      .then(res => {
+        setIsSearching(false);
+        setResults(res.results);
+      })
+      .catch(error => {
+        console.error(error);
+        setResults([]);
+      });
     return () => controller.abort();
   }, [debouncedSearchTerm]);
 
   return (
     <Box>
       <Heading fontSize="5xl">
-        <Flex direction={{base:'column', lg:'row'}} justify={'space-between'} alignItems="end">
-          <Text w={{base:'100%', lg:'50%'}} boxShadow="md" my={6} px={6}>
-            Trendings
+        <Flex
+          direction={{ base: 'column', lg: 'row' }}
+          justify={'space-between'}
+          alignItems="end"
+        >
+          <Text w={{ base: '100%', lg: '50%' }} boxShadow="md" my={6} px={6}>
+            {debouncedSearchTerm? `${debouncedSearchTerm}`: "Trendings"}
           </Text>
           <Input
             my={6}
             p={4}
             onChange={e => setSearchTerm(e.target.value)}
-            w={{base:'100%', lg:'50%'}}
+            w={{ base: '100%', lg: '50%' }}
             variant="filled"
             focusBorderColor="white"
             placeholder="The movie you are looking for..."

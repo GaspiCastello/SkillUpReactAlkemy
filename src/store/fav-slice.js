@@ -5,11 +5,11 @@ const favSlice = createSlice({
   initialState: { items: [] },
   reducers: {
     addAndRemove(state, action) {
-      const existingItem = state.items.find(item => item.id === action.payload.id);
+      const existingItem = state.items.find(_id => _id == action.payload.id);
       if (!existingItem) {
-        state.items.push(action.payload);
+        state.items.push(action.payload.id);
       } else {
-        state.items.filter(item => item.id !== action.payload.id);
+        state.items=state.items.filter(id => id !== action.payload.id);
       }
     },
   },

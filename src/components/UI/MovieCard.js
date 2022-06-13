@@ -1,6 +1,8 @@
 import { Box, Button, Divider, Image, Stack, Text } from '@chakra-ui/react';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { favActions } from '../../store/fav-slice';
 
 export default function MovieCard({
   poster_path,
@@ -9,30 +11,46 @@ export default function MovieCard({
   overview,
   id,
 }) {
+  const favsItems = useSelector(state => state.favs.items);
+  // console.log(favsItems,'in moviecard')  
+  let isFav;
+  if (favsItems.find(_id => _id === id)) {
+    isFav = true;
+  }
+  const dispatch = useDispatch();
   let url = `https://image.tmdb.org/t/p/w500/${poster_path}`;
-
+  const favoriteButtonHandler = e => {
+    e.stopPropagation();
+    dispatch(favActions.addAndRemove({ id }));
+  };
   return (
-    <Link to={`/favorites/${id}`}>
-      <Box
-        p={6}
-        borderRadius="lg"
-        border="1px solid "
-        borderColor="red.500"
-        boxShadow="lg"
-        
-      >
-        <Stack flexDirection="column">
-          <Image borderRadius={12} src={url} h="600px" objectFit="cover" />
+    <Box
+      w="auto"
+      p={{ base: 2, md: 6 }}
+      borderRadius="lg"
+      border="1px solid "
+      borderColor="red.500"
+      boxShadow="lg"
+      justifyContent="center"
+    >
+      <Stack flexDirection="column">
+        <Link to={`/${id}`}>
+          <Image m="auto" borderRadius={12} src={url} />
           <Divider />
           <Text fontSize="xl">{title ? title : original_name}</Text>
           <Divider />
           <Text fontSize="md">{overview}</Text>
           <Divider />
-          <Button pos="absolute" w={20} backgroundColor="red.800">
-            <AiOutlineStar size={35} />
-          </Button>
-        </Stack>
-      </Box>
-    </Link>
+        </Link>
+        <Button
+          onClick={favoriteButtonHandler}
+          pos="absolute"
+          w={20}
+          backgroundColor="red.800"
+        >
+          {!isFav ? <AiOutlineStar size={35} /> : <AiFillStar size={35} />}
+        </Button>
+      </Stack>
+    </Box>
   );
 }

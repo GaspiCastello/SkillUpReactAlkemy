@@ -1,70 +1,36 @@
 import {
-  Badge,
   Box,
-  Button,
   Divider,
-  Flex,
-  Image,
-  ListItem,
   Stack,
-  StackDivider,
   Text,
   UnorderedList,
 } from '@chakra-ui/react';
-import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+import MovieCard from './MovieCard';
 
 export default function MovieDetailCard({
   poster_path,
   title,
   overview,
-  id,
   original_name,
   popularity,
   production_companies,
   production_countries,
-  release_date,
   spoken_languages,
+  id
 }) {
   let url = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
   return (
-    <Stack
-      direction={{ base: 'column', md: 'row' }}
-      // divider={<StackDivider borderColor="gray.200" />}
-    >
-      <Box
-        w={{ base: '100%', md: '70%' }}
-        p={6}
-        borderRadius="lg"
-        border="1px solid "
-        borderColor="red.500"
-        boxShadow="lg"
-      >
-        <Stack flexDirection="column">
-          <Image borderRadius={12} src={url} h="600px" objectFit="cover" />
-          <Divider />
-          <Flex justifyContent="space-between">
-            <Text fontSize="xl">{title ? title : original_name}</Text>
+    <Stack direction={{ base: 'column', md: 'row' }} w={{base:'auto',lg:780}}>
+      <MovieCard
+        poster_path={poster_path}
+        title={title}
+        original_name={original_name}
+        overview={overview}
+        id={id}
+      />
 
-            <Badge
-              colorScheme="red"
-              px={6}
-              fontSize="lg"
-              borderRadius={9999999}
-            >
-              Rate: {Math.floor(popularity)}
-            </Badge>
-          </Flex>
-          <Divider />
-          <Text fontSize="md">{overview}</Text>
-          <Divider />
-          <Button pos="absolute" w={20} backgroundColor="red.800">
-            <AiOutlineStar size={35} />
-          </Button>
-        </Stack>
-      </Box>
-
-      <Box w={{ base: '100%', md: '30%' }}>
+      <Box w={{ base: 'auto'}}>
         <Stack
           p={6}
           borderRadius="lg"

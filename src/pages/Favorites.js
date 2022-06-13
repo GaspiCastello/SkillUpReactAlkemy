@@ -1,14 +1,34 @@
-import { Box, ChakraProvider, Grid, theme, Text } from '@chakra-ui/react';
-import { Outlet } from 'react-router-dom';
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 
 const Favorites = props => {
+  const favsItems = useSelector(state => state.favs.items);
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(res => {
+        if (!res || res.success == false) {
+          // console.log('no res in fetch');
+          return;
+        }
+        setDetails(res);
+      });
+  }, []);
   return (
-    <ChakraProvider theme={theme}>
-         <Text>
+    <Box>
+      <Heading fontSize="5xl">
+        <Flex
+          direction={{ base: 'column', lg: 'row' }}
+          justify={'space-between'}
+          alignItems="end"
+        >
+          <Text w={{ base: '100%', lg: '50%' }} boxShadow="md" my={6} px={6}>
             Favorites
           </Text>
-          <Outlet />
-    </ChakraProvider>
+        </Flex>
+      </Heading>
+
+      <List results={results} />
+    </Box>
   );
 };
 

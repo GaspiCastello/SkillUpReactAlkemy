@@ -9,10 +9,9 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="*" element={<Home />} />
-        <Route path="favorites" element={<Favorites />}>
-          <Route path=":movieId" element={<MovieDetail />} />
-        </Route>
+        <Route index element={<Home />} />
+        <Route path="/:movieId" element={<MovieDetail />} />
+        <Route path="favorites" element={<Favorites />} />
       </Routes>
     </Layout>
   );
