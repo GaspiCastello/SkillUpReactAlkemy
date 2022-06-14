@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 const Favorites = props => {
   const favsItems = useSelector(state => state.favs.items);
+  console.log(favsItems)
   // useEffect(() => {
   //   fetch(url)
   //     .then(res => res.json())
